@@ -1,0 +1,73 @@
+.modal-backdrop {
+  background: #808080;
+}
+
+.modal-dialog {
+  margin: 80px 10px;
+}
+.modal-content {
+  border: none;
+  border-radius: 4px;
+}
+.alert-modal .modal-header {
+  border-top-right-radius: 4px;
+  background: grey;
+  border-top-left-radius: 4px;
+}
+
+.alert-modal .modal-footer {
+  padding: 10px;
+  text-align: right;
+  border: none;
+}
+
+.alert-modal .success {
+  background: #4c9848;
+  color: #eaeaea;
+}
+
+.alert-modal .warning {
+  background: #dcb82d;
+  color: white;
+}
+
+.alert-modal .danger {
+  background: #bd3333;
+  color: #eaeaea;
+}
+
+.alert-modal .info {
+  background: #2583d6;
+  color: #eaeaea;
+}
+
+.alert-modal .btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    margin: 90px auto;
+    position: absolute;
+    right: 20px;
+    width: 500px;
+  }
+}
