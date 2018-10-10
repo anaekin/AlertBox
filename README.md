@@ -24,11 +24,11 @@ ui-bootstrap
 
 #AlertType
 
-AlertType.SUCCESS  - success
-AlertType.WARNING - warning
-AlertType.DANGER - danger
-AlertType.INFO - info
-AlertType.DEFAULT - default
+1. AlertType.SUCCESS  - success
+2. AlertType.WARNING - warning
+3. AlertType.DANGER - danger
+4. AlertType.INFO - info
+5. AlertType.DEFAULT - default
 
 
 
