@@ -19,15 +19,32 @@ testapp.controller("MainController", [
     AlertService,
     AlertType
   ) {
-    this.showAlert = function() {
-      alert("Yeahh");
+    $scope.success = function() {
+      AlertService.alert(
+        "Success",
+        "This is success message",
+        AlertType.SUCCESS
+      );
     };
-
-    $scope.open = function() {
-      AlertService.alert("Success", "Success", AlertType.SUCCESS);
-      AlertService.alert("DANGER", "DANGER", AlertType.DANGER);
-      AlertService.alert("WARNING", "WARNING", AlertType.WARNING);
-      AlertService.alert("INFO", "INFO", AlertType.INFO);
+    $scope.danger = function() {
+      AlertService.alert("Danger", "This is danger message", AlertType.DANGER);
+    };
+    $scope.warning = function() {
+      AlertService.alert(
+        "Warning",
+        "This is warning message",
+        AlertType.WARNING
+      );
+    };
+    $scope.info = function() {
+      AlertService.alert("Info", "This is info message", AlertType.INFO);
+    };
+    $scope.default = function() {
+      AlertService.alert(
+        "Default",
+        "This is default message",
+        AlertType.DEFAULT
+      );
     };
   }
 ]);

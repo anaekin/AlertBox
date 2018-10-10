@@ -20,12 +20,17 @@
 
 <body>
     <div ng-app="TestApp" ng-controller="MainController as mc">
+        <div class="jumbotron text-center">
+            <h1>AlertBox Demo</h1>
+            <p>Simple material design template for alert</p>
+        </div>
         <div class="container">
             <div class="row">
-                <button class="btn btn-primary" ng-click="mc.showAlert()">Open Alert!</button>
-
-                <button class="btn btn-primary" ng-click="open()">Test Alert!</button>
-
+                <button class="btn btn-success" ng-click="success()">Success Alert!</button>
+                <button class="btn btn-danger" ng-click="danger()">Danger Alert!</button>
+                <button class="btn btn-warning" ng-click="warning()">Warning Alert!</button>
+                <button class="btn btn-info" ng-click="info()">Info Alert!</button>
+                <button class="btn btn-default" ng-click="default()">Default</button>
 
             </div>
         </div>

@@ -22,12 +22,12 @@
 }
 
 .alert-modal .success {
-  background: #4c9848;
+  background: #58ab54;
   color: #eaeaea;
 }
 
 .alert-modal .warning {
-  background: #dcb82d;
+  background: #e4ba15;
   color: white;
 }
 
@@ -37,7 +37,12 @@
 }
 
 .alert-modal .info {
-  background: #2583d6;
+  background: #358edc;
+  color: #eaeaea;
+}
+
+.alert-modal .default {
+  background: #8c8c8c;
   color: #eaeaea;
 }
 
