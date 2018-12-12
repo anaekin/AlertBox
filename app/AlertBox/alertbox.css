@@ -5,10 +5,12 @@
 .modal-dialog {
   margin: 80px 10px;
 }
+
 .modal-content {
   border: none;
   border-radius: 4px;
 }
+
 .alert-modal .modal-header {
   border-top-right-radius: 4px;
   background: grey;
@@ -32,7 +34,7 @@
 }
 
 .alert-modal .danger {
-  background: #bd3333;
+  background: #f55353;
   color: #eaeaea;
 }
 
@@ -47,9 +49,9 @@
 }
 
 .alert-modal .btn {
+  outline: none !important;
   display: inline-block;
   padding: 6px 12px;
-  margin-bottom: 0;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.42857143;
@@ -66,6 +68,63 @@
   background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
+  border: 2px solid #dddddd;
+}
+
+.alert-modal .btn:focus,
+.alert-modal .btn:hover {
+  border: 2px solid #b9b7b7;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15), 0 1px 9px 0px rgba(0, 0, 0, 0.18);
+}
+
+.alert-modal .btn-success {
+  background: #58ab54;
+  border: 2px solid #58ab54;
+  color: #eaeaea;
+}
+
+.alert-modal .btn-success:focus,
+.alert-modal .btn-success:hover {
+  border: 2px solid #289a22;
+  color: #eaeaea;
+}
+
+
+.alert-modal .btn-warning {
+  background: #e4ba15;
+  border: 2px solid #e4ba15;
+  color: white;
+}
+
+.alert-modal .btn-warning:focus,
+.alert-modal .btn-warning:hover {
+  border: 2px solid #b99f3b;
+  color: white;
+}
+
+.alert-modal .btn-info {
+  background: #358edc;
+  border: 2px solid #358edc;
+  color: #fff;
+}
+
+.alert-modal .btn-info:focus,
+.alert-modal .btn-info:hover {
+  border: 2px solid #0f78d4;
+  color: #fff;
+}
+
+
+.alert-modal .btn-danger {
+  background: #f55353;
+  border: 2px solid #f55353;
+  color: #eaeaea;
+}
+
+.alert-modal .btn-danger:focus,
+.alert-modal .btn-danger:hover {
+  border: 2px solid #cc4949;
+  color: #eaeaea;
 }
 
 @media (min-width: 768px) {
@@ -73,6 +132,6 @@
     margin: 90px auto;
     position: absolute;
     right: 20px;
-    width: 500px;
+    width: 400px;
   }
 }

@@ -9,7 +9,7 @@ testapp.controller("MainController", [
   "$uibModal",
   "AlertService",
   "AlertType",
-  function(
+  function (
     $scope,
     $http,
     $timeout,
@@ -19,32 +19,40 @@ testapp.controller("MainController", [
     AlertService,
     AlertType
   ) {
-    $scope.success = function() {
+    $scope.success = function () {
       AlertService.alert(
         "Success",
         "This is success message",
         AlertType.SUCCESS
       );
     };
-    $scope.danger = function() {
+    $scope.danger = function () {
       AlertService.alert("Danger", "This is danger message", AlertType.DANGER);
     };
-    $scope.warning = function() {
+    $scope.warning = function () {
       AlertService.alert(
         "Warning",
         "This is warning message",
         AlertType.WARNING
       );
     };
-    $scope.info = function() {
+    $scope.info = function () {
       AlertService.alert("Info", "This is info message", AlertType.INFO);
     };
-    $scope.default = function() {
+    $scope.default = function () {
       AlertService.alert(
         "Default",
         "This is default message",
         AlertType.DEFAULT
       );
+    };
+
+    $scope.confirmation = function () {
+      AlertService.confirm("Warning", "Are you sure?", AlertType.WARNING).then(function (selectedItem) {
+        console.log("warning selected", selectedItem);
+      }, function () {
+
+      });
     };
   }
 ]);

@@ -8,7 +8,8 @@
     </div>
     <div class="modal-footer">
         <div class="button-row">
-            <button class="btn btn-danger" ng-click="cancel()">Ok</button>
+            <button class="btn btn-danger" ng-click="accept()">{{modalData.acceptLabel}}</button>
+            <button class="btn btn-close" ng-click="deny()">{{modalData.denyLabel}}</button>
         </div>
     </div>
 </div>
