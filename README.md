@@ -6,6 +6,10 @@ Custom design alert box - Material theme
 Here is a material design alert box. AlertBox is created using ui-bootstrap. This is just for creative purpose and nothing out of ordinary.
 Although it is simple to use.
 
+# Features
+1. Using html template in place of message.
+2. Alert template can be modified.
+3. Easy usage in app for confirmation and alert box.
 
 # Dependecies
 
@@ -29,6 +33,8 @@ ui-bootstrap
 3. AlertType.DANGER - error
 4. AlertType.INFO - info
 5. AlertType.DEFAULT - default
+
+
 
 
 
