@@ -1,18 +1,18 @@
 # AlertBoxDemo
 Custom design alert box - Material theme
 
-#Description
+# Description
 
 Here is a material design alert box. AlertBox is created using ui-bootstrap. This is just for creative purpose and nothing out of ordinary.
 Although it is simple to use.
 
 
-#Dependecies
+# Dependecies
 
 angularjs
 ui-bootstrap
 
-#How to use
+# How to use
 1. Copy the AlertBox folder in your app folder.
 2. Include alertbox.js and alertbox.css in your html.
 3. In controller, add 'AlertService' and 'AlertType' as dependencies.
@@ -22,11 +22,11 @@ ui-bootstrap
 5. Done!
 
 
-#AlertType
+# AlertType
 
 1. AlertType.SUCCESS  - success
 2. AlertType.WARNING - warning
-3. AlertType.DANGER - danger
+3. AlertType.DANGER - error
 4. AlertType.INFO - info
 5. AlertType.DEFAULT - default
 
