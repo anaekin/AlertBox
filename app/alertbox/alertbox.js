@@ -1,5 +1,5 @@
-var alertbox = angular.module("AlertBox", ["ui.bootstrap"]);
-alertbox.constant("AlertType", {
+angular.module("AlertBox", ["ui.bootstrap"]);
+angular.module("AlertBox").constant("AlertType", {
     SUCCESS: "success",
     WARNING: "warning",
     DANGER: "danger",
@@ -7,32 +7,65 @@ alertbox.constant("AlertType", {
     PRIMARY: "primary",
     DEFAULT: "default"
 });
-alertbox.controller("ModalInstanceCtrl", function (
-    $scope,
-    $uibModalInstance,
-    modalData
-) {
+
+angular.module("AlertBox").run(["$templateCache", function($templateCache) {
+    $templateCache.put("modal-template.html", '<div class="alert-modal">' +
+        '<div class="modal-header" ng-class="modalData.modalClass">' +
+        '<span class="modal-header-label">{{modalData.heading}}</span>' +
+        '<button class="close" ng-click="cancel()">&times;</button>' +
+        '</div>' +
+        '<div class="modal-body">' +
+        '<span class="modal-description" ng-bind-html="modalData.message | trustHtml"></span>' +
+        '</div>' +
+        '<div class="modal-footer">' +
+        '<div class="button-row">' +
+        '<button class="btn btn-close" ng-click="cancel()">OK</button>' +
+        '</div>' +
+        '</div>' +
+        '</div>');
+
+
+    $templateCache.put("modal-confirm-template.html", '<div class="alert-modal">' +
+        '<div class="modal-header" ng-class="modalData.modalClass">' +
+        '<span class="modal-header-label">{{modalData.heading}}</span>' +
+        '<button class="close" ng-click="cancel()">&times;</button>' +
+        '</div>' +
+        '<div class="modal-body">' +
+        '<span class="modal-description" ng-bind-html="modalData.message | trustHtml"></span>' +
+        '</div>' +
+        '<div class="modal-footer">' +
+        '<div class="button-row">' +
+        '<button class="btn btn-danger" ng-click="accept()">{{modalData.acceptLabel}}</button>' +
+        '<button class="btn btn-close" ng-click="deny()">{{modalData.denyLabel}}</button>' +
+        '</div>' +
+        '</div>' +
+        '</div>');
+}]);
+angular.module("AlertBox").controller("ModalInstanceCtrl", ["$scope", "$uibModalInstance", "modalData", function($scope, $uibModalInstance, modalData) {
     $scope.modalData = modalData;
 
-    $scope.ok = function () {
-        $uibModalInstance.close("ok");
-    };
+    $scope.ok = function() {
+        $uibModalInstance.close("ok");    };
 
-    $scope.cancel = function () {
+    $scope.cancel = function() {
         $uibModalInstance.dismiss("cancel");
         return false;
     };
 
-    $scope.accept = function () {
+    $scope.accept = function() {
         $uibModalInstance.close(true);
     };
 
-    $scope.deny = function () {
+    $scope.deny = function() {
         $uibModalInstance.close(false);
     };
-});
-
-alertbox.factory("AlertService", function (AlertType, $uibModal, $timeout) {
+}]);
+angular.module("AlertBox").filter("trustHtml", ["$sce", function($sce) {
+    return function(html) {
+        return $sce.trustAsHtml(html)
+    }
+}]);
+angular.module("AlertBox").factory("AlertService", ["AlertType", "$uibModal", "$timeout", function(AlertType, $uibModal, $timeout) {
     function AlertBox(heading, message, modalClass, extraOptions) {
         this.heading = heading;
         this.message = message;
@@ -48,7 +81,7 @@ alertbox.factory("AlertService", function (AlertType, $uibModal, $timeout) {
     }
 
     AlertBox.prototype = {
-        showAlert: function () {
+        showAlert: function() {
             var modalOptions = {};
             var extraOptions = {};
             modalOptions.heading = this.heading;
@@ -59,23 +92,23 @@ alertbox.factory("AlertService", function (AlertType, $uibModal, $timeout) {
             modalOptions.autoCloseTime = extraOptions.autoCloseTime ? extraOptions.autoCloseTime : 2000;
 
             var modalInstance = $uibModal.open({
-                templateUrl: "app/alertbox/partials/modal-template.html",
+                templateUrl: "modal-template.html",
                 controller: "ModalInstanceCtrl",
                 size: "md",
                 resolve: {
-                    modalData: function () {
+                    modalData: function() {
                         return modalOptions;
                     }
                 }
             });
 
             if (modalOptions.autoClose || modalOptions.modalClass === AlertType.SUCCESS) {
-                $timeout(function () {
+                $timeout(function() {
                     modalInstance.close("ok");
                 }, modalOptions.autoCloseTime);
             }
 
-            modalInstance.result.then(function (selectedItem) {}, function () {});
+            modalInstance.result.then(function(selectedItem) {}, function() {});
         },
     };
 
@@ -93,7 +126,7 @@ alertbox.factory("AlertService", function (AlertType, $uibModal, $timeout) {
         */
     }
     ConfirmBox.prototype = {
-        showConfirm: function () {
+        showConfirm: function() {
             var modalOptions = {};
             var extraOptions = {};
             modalOptions.heading = this.heading;
@@ -101,15 +134,15 @@ alertbox.factory("AlertService", function (AlertType, $uibModal, $timeout) {
             modalOptions.modalClass = this.modalClass;
 
             extraOptions = this.extraOptions ? this.extraOptions : {};
-            modalOptions.acceptLabel = extraOptions.acceptLabel ? extraOptions.acceptLabel : "Ok";
+            modalOptions.acceptLabel = extraOptions.acceptLabel ? extraOptions.acceptLabel : "OK";
             modalOptions.denyLabel = extraOptions.denyLabel ? extraOptions.denyLabel : "Cancel";
 
             var modalInstance = $uibModal.open({
-                templateUrl: "app/alertbox/partials/modal-confirm-template.html",
+                templateUrl: "modal-confirm-template.html",
                 controller: "ModalInstanceCtrl",
                 size: "md",
                 resolve: {
-                    modalData: function () {
+                    modalData: function() {
                         return modalOptions;
                     }
                 }
@@ -134,4 +167,4 @@ alertbox.factory("AlertService", function (AlertType, $uibModal, $timeout) {
         alert: getAlertBox,
         confirm: getConfirmBox
     };
-});
+}]);
