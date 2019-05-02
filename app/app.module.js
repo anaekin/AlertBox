@@ -49,7 +49,19 @@ testapp.controller("MainController", [
 
     $scope.confirmation = function () {
       AlertService.confirm("Warning", "Are you sure?", AlertType.WARNING).then(function (selectedItem) {
-        console.log("warning selected", selectedItem);
+        if(selectedItem){
+          AlertService.alert(
+            "YES",
+            "You pressed <b>YES</b>",
+            AlertType.SUCCESS
+          );
+        }else {
+          AlertService.alert(
+            "NO",
+            "You pressed <b>CANCEL</b>",
+            AlertType.DANGER
+          );
+        }
       }, function () {
 
       });
