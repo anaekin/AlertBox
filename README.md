@@ -1,4 +1,4 @@
-# AlertBoxDemo
+# AlertBox
 Custom design alert box - Material theme
 
 # Description
